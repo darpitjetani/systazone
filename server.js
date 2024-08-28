@@ -131,11 +131,13 @@ app.post('/api/v1/auth/register', async (req, res) => {
 });
 
               
+// Define allowed origins
 const allowedOrigins = [
-  'https://digitalbusinessplan.in',
-  'https://digital-1.vercel.app'
+  'https://systazone-n3i6oh1ir-darpitjetanis-projects.vercel.app',
+  // Add other origins if needed
 ];
 
+// Configure CORS
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
