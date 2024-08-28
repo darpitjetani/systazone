@@ -131,11 +131,30 @@ app.post('/api/v1/auth/register', async (req, res) => {
 });
 
               
-app.use(cors({
-  origin: 'https://digitalbusinessplan.in', 
-  credentials: true
-}));
-  app.use(express.json());
+const allowedOrigins = [
+  'https://digitalbusinessplan.in',
+  'https://digital-1.vercel.app'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// Your other middleware and routes here
+app.use(express.json());
+
+app.get('/api/user-count', (req, res) => {
+  res.send('User count endpoint');
+});
   app.use(express.urlencoded({ extended: true }));
 
   const storage = multer.diskStorage({
@@ -172,14 +191,14 @@ app.use(cors({
 
   app.use('/api/v1/auth', require('./routes/authRoute')); 
 
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  // app.use(express.static(path.join(__dirname, '../client/build')));
   
-  app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+  // app.get('*', (req, res) => {
+  //     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  // });
 
 
-  // app.use("/api/v1/auth", authRoutes);
+  app.use("/api/v1/auth", authRoutes);
 
   app.get("/", (req, res) => {
       res.send("<h1>Welcome to ecommerce</h1>");
