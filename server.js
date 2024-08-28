@@ -131,12 +131,11 @@ app.post('/api/v1/auth/register', async (req, res) => {
 });
 
               
-// Define allowed origins
 const allowedOrigins = [
-  'https://systazone-3jszdogh7-darpitjetanis-projects.vercel.app'
+  'https://systazone-3jszdogh7-darpitjetanis-projects.vercel.app', // Add your front-end URL here
+  'https://systazone-n3i6oh1ir-darpitjetanis-projects.vercel.app'
 ];
 
-// Configure CORS
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
