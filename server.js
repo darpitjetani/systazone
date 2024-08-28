@@ -133,7 +133,7 @@ app.post('/api/v1/auth/register', async (req, res) => {
               
 // Define allowed origins
 const allowedOrigins = [
-  'https://systazone-n3i6oh1ir-darpitjetanis-projects.vercel.app',
+  'https://systazone-3jszdogh7-darpitjetanis-projects.vercel.app',
   // Add other origins if needed
 ];
 
