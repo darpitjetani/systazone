@@ -133,8 +133,8 @@ app.post('/api/v1/auth/register', async (req, res) => {
               
 // Define allowed origins
 const allowedOrigins = [
-  'https://systazone-3jszdogh7-darpitjetanis-projects.vercel.app',
-  // Add other origins if needed
+  'https://digitalbusinessplan.in',
+  'https://digital-1.vercel.app'
 ];
 
 // Configure CORS
